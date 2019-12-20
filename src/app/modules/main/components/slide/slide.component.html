@@ -1,0 +1,13 @@
+<input type="radio" name="nav" [value]="data.id" id={`slide_${data.id}`} [checked]="data.active">
+<label for={`slide_${data.id}`} (click)="activate(data.id);false"></label>
+<div class="slide"  [ngStyle]="{'background': 'url(' + data.image + ') center center', 'background-size': 'cover'}">
+  <img [src]="data.image" />
+  <div class="bulletContainer">
+    <a *ngFor="let i of [0,1,2,3,4]" (click)="activate(i);false" class="bullet" [class.bulletSelected]="data.active && data.index === i"></a>
+  </div>
+  <div class="caption carouselCaption">
+    <p>{{data.caption}}
+      <a target="_blank" [routerLink]="['/']">{{data.title}}</a>
+    </p>
+  </div>
+</div>

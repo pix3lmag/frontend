@@ -1,0 +1,7 @@
+<!-- CAROUSEL -->
+<section class="carousel">
+  <div id="slideBuffer">
+    <img src="https://picsum.photos/200/300" />
+  </div>
+  <app-main-slide *ngFor="let slide of slides" [data]="slide" (activeChanged)="onActiveChanged($event)"></app-main-slide>
+</section>

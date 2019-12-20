@@ -1,0 +1,75 @@
+<div class="tabs is-right is-small">
+  <ul>
+    <li [class.is-active]="selectedCategory===null"><a (click)="setCategory(null);false">All</a></li>
+    <li *ngFor="let category of categories" [class.is-active]="selectedCategory===category.id"><a
+        (click)="setCategory(category.id);false">{{category.caption}}</a></li>
+  </ul>
+</div>
+<div class="container">
+  <ngx-spinner bdOpacity=0.9 bdColor="#fff" size="small" color="#000" type="ball-atom" [fullScreen]="false">
+  </ngx-spinner>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <div class="tile is-child">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3 is-fullwidth">
+              <img [src]="news[0].image" [alt]="news[0].title">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">{{news[0].title}}</p>
+                <p class="subtitle is-7">{{news[0].createdAt| date: 'dd.MM.yyyy'}} von
+                  <small>(@{{news[0].createdBy}})</small></p>
+              </div>
+            </div>
+            <div class="content">
+              {{news[0].introduction}}<br />
+              <button class="button is-small is-dark is-text">Weiterlesen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tile is-4 is-vertical is-parent">
+      <div class="tile is-child">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-5by4 is-fullwidth">
+              <img [src]="news[1].image" [alt]="news[1].title">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-6">{{news[1].title}}</p>
+                <p class="subtitle is-7">{{news[1].createdAt| date: 'dd.MM.yyyy'}} von
+                  <small>(@{{news[1].createdBy}})</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tile is-child">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-5by4 is-fullwidth">
+              <img [src]="news[2].image" [alt]="news[2].title">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-5">{{news[2].title}}</p>
+                <p class="subtitle is-7">{{news[2].createdAt| date: 'dd.MM.yyyy'}} von
+                  <small>(@{{news[2].createdBy}})</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

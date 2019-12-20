@@ -1,0 +1,19 @@
+.main, .carousel {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.has-background-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.is-background-image {
+  position: absolute;
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  height: 100%;
+}
