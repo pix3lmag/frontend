@@ -8,7 +8,8 @@
 <div class="container">
   <ngx-spinner bdOpacity=0.9 bdColor="#fff" size="small" color="#000" type="ball-atom" [fullScreen]="false">
   </ngx-spinner>
-  <div class="tile is-ancestor">
+  <div *ngIf="news.length == 0"></div>
+  <div class="tile is-ancestor" *ngIf="news.length > 0">
     <div class="tile is-parent">
       <div class="tile is-child">
         <div class="card">

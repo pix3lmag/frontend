@@ -29,7 +29,6 @@ export class LatestNewsComponent implements OnInit {
       .subscribe(news => {
         setTimeout(() => {
           this.news = news;
-          console.log(news);
           this.spinner.hide();
           this.isLoading = false;
         }, 200);

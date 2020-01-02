@@ -28,6 +28,7 @@ const INTRODUCTIONS = [
 })
 export class NewsService {
   news: any[] = [];
+  view: any[] = [];
   constructor() {
     this.news = this.loadNews();
   }
@@ -47,7 +48,7 @@ export class NewsService {
       const id = this.getRandomInt(1024);
       const createdAt = this.addDays(3);
       const createdBy = 'Author McAwesome';
-      const categoryId = this.getRandomInt(4);
+      const categoryId = this.getRandomInt(4) + 1;
       result.push({
         id,
         title: TITLES[this.getRandomInt(TITLES.length - 1)],
@@ -57,31 +58,34 @@ export class NewsService {
         categoryId,
         introduction: INTRODUCTIONS[this.getRandomInt(INTRODUCTIONS.length - 1)]
       });
+      console.log({categoryId});
     }
+
     return result.sort((a, b) => b.createdAt - a.createdAt);
   }
 
   get(categoryId?: number, limit?: number, offset?: number): Observable<any[]> {
     limit = limit || DEFAULT_LIMIT;
     offset = offset || DEFAULT_OFFSET;
+    this.view = this.news;
     if (categoryId !== null) {
       this.filterByCategoryId(categoryId);
     }
     this.handleOffset(limit, offset);
-    return of(this.news);
+    return of(this.view);
   }
 
   private handleOffset(limit?: number, offset?: number) {
     if (limit != null) {
       let end = limit + offset;
-      if (end > this.news.length) {
-        end = this.news.length;
+      if (end > this.view.length) {
+        end = this.view.length;
       }
-      this.news = this.news.slice(offset, end);
+      this.view = this.view.slice(offset, end);
     }
   }
 
   private filterByCategoryId(id: number) {
-    this.news = this.news.filter(news => news.categoryId === id);
+    this.view = this.view.filter(news => news.categoryId === id);
   }
 }
