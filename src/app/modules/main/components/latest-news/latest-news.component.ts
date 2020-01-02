@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-latest-news',
@@ -14,7 +15,8 @@ export class LatestNewsComponent implements OnInit {
   isLoading = true;
   constructor(
     private newsService: NewsService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -25,14 +27,13 @@ export class LatestNewsComponent implements OnInit {
   loadLatestNews() {
     this.spinner.show();
     this.isLoading = true;
-    this.newsService.get(this.selectedCategory, 3, 0)
-      .subscribe(news => {
-        setTimeout(() => {
-          this.news = news;
-          this.spinner.hide();
-          this.isLoading = false;
-        }, 200);
-      });
+    this.newsService.get(this.selectedCategory, 3, 0).subscribe(news => {
+      setTimeout(() => {
+        this.news = news;
+        this.spinner.hide();
+        this.isLoading = false;
+      }, 200);
+    });
   }
 
   loadCategories() {
@@ -47,5 +48,15 @@ export class LatestNewsComponent implements OnInit {
   setCategory(id?: number) {
     this.selectedCategory = id;
     this.loadLatestNews();
+  }
+
+  goto(id: number) {
+    console.log(`### going to article with id #${id}`);
+    // this.router.navigateByUrl(`/article/${id}`);
+  }
+
+  gotoAuthor(id: number) {
+    console.log(`### going to author page with id #${id}`);
+    // this.router.navigateByUrl(`/author/${id}`);
   }
 }

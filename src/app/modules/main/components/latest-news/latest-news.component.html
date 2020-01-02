@@ -1,18 +1,24 @@
-<div class="tabs is-right is-small">
-  <ul>
-    <li [class.is-active]="selectedCategory===null"><a (click)="setCategory(null);false">All</a></li>
-    <li *ngFor="let category of categories" [class.is-active]="selectedCategory===category.id"><a
-        (click)="setCategory(category.id);false">{{category.caption}}</a></li>
-  </ul>
+<div class="columns">
+  <div class="column">
+    <p class="block-title title">pix<strong>3</strong>l mag</p>
+  </div>
+  <div class="column">
+    <div class="tabs is-right is-small">
+      <ul>
+        <li [class.is-active]="selectedCategory===null"><a (click)="setCategory(null);false">All</a></li>
+        <li *ngFor="let category of categories" [class.is-active]="selectedCategory===category.id"><a
+            (click)="setCategory(category.id);false">{{category.caption}}</a></li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="container">
   <ngx-spinner bdOpacity=0.9 bdColor="#fff" size="small" color="#000" type="ball-atom" [fullScreen]="false">
   </ngx-spinner>
-  <div *ngIf="news.length == 0"></div>
-  <div class="tile is-ancestor" *ngIf="news.length > 0">
+  <div class="tile is-ancestor">
     <div class="tile is-parent">
       <div class="tile is-child">
-        <div class="card">
+        <div class="card" (click)="goto(news[0].id);false">
           <div class="card-image">
             <figure class="image is-4by3 is-fullwidth">
               <img [src]="news[0].image" [alt]="news[0].title">
@@ -23,7 +29,7 @@
               <div class="media-content">
                 <p class="title is-4">{{news[0].title}}</p>
                 <p class="subtitle is-7">{{news[0].createdAt| date: 'dd.MM.yyyy'}} von
-                  <small>(@{{news[0].createdBy}})</small></p>
+                  <small class="author" (click)="gotoAuthor(news[0].createdById); false">(@{{news[0].createdBy}})</small></p>
               </div>
             </div>
             <div class="content">
@@ -36,7 +42,7 @@
     </div>
     <div class="tile is-4 is-vertical is-parent">
       <div class="tile is-child">
-        <div class="card">
+        <div class="card" (click)="goto(news[1].id);false">
           <div class="card-image">
             <figure class="image is-5by4 is-fullwidth">
               <img [src]="news[1].image" [alt]="news[1].title">
@@ -47,14 +53,14 @@
               <div class="media-content">
                 <p class="title is-6">{{news[1].title}}</p>
                 <p class="subtitle is-7">{{news[1].createdAt| date: 'dd.MM.yyyy'}} von
-                  <small>(@{{news[1].createdBy}})</small></p>
+                  <small class="author" (click)="gotoAuthor(news[1].createdById); false">(@{{news[1].createdBy}})</small></p>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div class="tile is-child">
-        <div class="card">
+        <div class="card" (click)="goto(news[2].id);false">
           <div class="card-image">
             <figure class="image is-5by4 is-fullwidth">
               <img [src]="news[2].image" [alt]="news[2].title">
@@ -65,7 +71,7 @@
               <div class="media-content">
                 <p class="title is-5">{{news[2].title}}</p>
                 <p class="subtitle is-7">{{news[2].createdAt| date: 'dd.MM.yyyy'}} von
-                  <small>(@{{news[2].createdBy}})</small></p>
+                  <small class="author" (click)="gotoAuthor(news[2].createdById); false">(@{{news[2].createdBy}})</small></p>
               </div>
             </div>
           </div>

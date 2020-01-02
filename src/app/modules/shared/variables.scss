@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Outline|Press+Start+2P&display=swap');
+
+$outline-font-family: 'Bungee Outline', cursive;
+$inline-font-family: 'Bungee Inline', cursive;
+$ps2p-font-family: 'Press Start 2P', cursive;
+
+
+$brand-color: #c40;
+$brand-alternate-color: #c80;
+$text-color: #000;
+
+p.block-title {
+  /*font-size: 1.5em;*/
+  font-family: $outline-font-family;
+}
+
+p.block-title strong {
+  color: $brand-color;
+  font-family: $inline-font-family;
+}
+

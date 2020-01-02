@@ -10,6 +10,8 @@ import { TopGamesComponent } from './components/top-games/top-games.component';
 import { NewsComponent } from './components/news/news.component';
 import { NewsService } from './services/news.service';
 import { SharedModule } from '../shared/shared.module';
+import { HeroYoutubeComponent } from './components/hero-youtube/hero-youtube.component';
+import { ReviewsComponent } from './components/reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { SharedModule } from '../shared/shared.module';
     FrontpageComponent,
     LatestNewsComponent,
     TopGamesComponent,
-    NewsComponent
+    NewsComponent,
+    HeroYoutubeComponent,
+    ReviewsComponent
   ],
   imports: [
     CommonModule,

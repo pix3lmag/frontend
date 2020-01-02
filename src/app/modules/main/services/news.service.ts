@@ -38,16 +38,17 @@ export class NewsService {
   }
   private addDays(days: number) {
     const date = new Date();
-    date.setDate(date.getDate() + this.getRandomInt(days));
+    date.setDate(date.getDate() - this.getRandomInt(days));
     return date;
   }
 
   private loadNews(): any[] {
     const result: any[] = [];
-    for (let i = 0; i < 500; i++) {
-      const id = this.getRandomInt(1024);
-      const createdAt = this.addDays(3);
+    for (let i = 0; i < 50; i++) {
+      const id = this.getRandomInt(1023);
+      const createdAt = this.addDays(20);
       const createdBy = 'Author McAwesome';
+      const createdById = 1;
       const categoryId = this.getRandomInt(4) + 1;
       result.push({
         id,
@@ -55,12 +56,11 @@ export class NewsService {
         image: `https://picsum.photos/id/${id}/1920/1080`,
         createdAt,
         createdBy,
+        createdById,
         categoryId,
         introduction: INTRODUCTIONS[this.getRandomInt(INTRODUCTIONS.length - 1)]
       });
-      console.log({categoryId});
     }
-
     return result.sort((a, b) => b.createdAt - a.createdAt);
   }
 

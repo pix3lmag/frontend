@@ -1,1 +1,21 @@
-<p>news works!</p>
+  <article>
+    <p class="block-title title">latest <strong>news</strong></p>
+    <div class="content">
+      <ngx-spinner bdOpacity=0.9 bdColor="#fff" size="small" color="#000" type="ball-atom" [fullScreen]="false">
+      </ngx-spinner>
+      <div class="columns is-small box" *ngFor="let item of news">
+        <div class="column is-two-thirds">
+          <p class="title">{{item.title}}</p>
+          <p class="subtitle author" (click)="gotoAuthor(item.createdById); false">von <strong>@{{item.createdBy}}</strong></p>
+          <div class="content">
+            <small>{{item.introduction}}</small>
+          </div>
+        </div>
+        <div class="column is-one-third">
+            <figure class="image is-fullwidth">
+              <img [src]="item.image" [alt]="item.title" />
+            </figure>
+        </div>
+      </div>
+    </div>
+  </article>

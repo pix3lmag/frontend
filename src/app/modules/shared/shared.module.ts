@@ -7,4 +7,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   imports: [CommonModule, NgxSpinnerModule],
   exports: [NgxSpinnerModule]
 })
-export class SharedModule {}
+export class SharedModule {
+  public static SETTINGS_NEWS_LIMIT = 10;
+}
